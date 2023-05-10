@@ -31,13 +31,13 @@ export default function Header() {
         MyBlog
       </Link>
       <nav>
-        {userInfo && (
+        {username && (
           <>
             <Link to="/create">Create new post</Link>
             <a onClick={logout}>Logout ({username})</a>
           </>
         )}
-        {!userInfo && (
+        {!username && (
           <>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>

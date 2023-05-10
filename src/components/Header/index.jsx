@@ -22,9 +22,6 @@ export default function Header() {
 
   const username = userInfo?.username;
 
-  console.log("header");
-  console.log(userInfo);
-
   return (
     <header>
       <Link to="/" className="logo">

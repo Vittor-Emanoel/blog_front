@@ -5,6 +5,7 @@ export default function Layout() {
   return (
     <main>
       <Header />
+      {console.log("layout")}
       <Outlet />
     </main>
   );

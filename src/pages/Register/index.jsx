@@ -34,7 +34,7 @@ export default function RegisterPage() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button>Register</button>
+      <button type="submit">Register</button>
     </form>
   );
 }

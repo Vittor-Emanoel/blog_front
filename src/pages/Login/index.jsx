@@ -1,18 +1,15 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import "../../App.css";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [redirect, setRedirect] = useState(false);
-  const navigate = useNavigate();
+  const [redirect, setRedirect] = useState(false);
+  const { setUserInfo } = useContext(UserContext);
 
-  const redirect = () => {
-    navigate("/");
-  };
-
-  async function handleRegister(ev) {
+  async function login(ev) {
     ev.preventDefault();
     const response = await fetch("http://localhost:3333/login", {
       method: "POST",
@@ -20,16 +17,22 @@ export default function LoginPage() {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
-
     if (response.ok) {
-      redirect();
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo);
+        setRedirect(true);
+      });
     } else {
-      alert("erro ao fazer loggin");
+      alert("wrong credentials");
     }
   }
 
+  if (redirect) {
+    return <Navigate to={"/"} />;
+  }
+
   return (
-    <form className="login" onSubmit={handleRegister}>
+    <form className="login" onSubmit={login}>
       <h1>Login</h1>
       <input
         type="text"
@@ -43,7 +46,7 @@ export default function LoginPage() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button>Login</button>
+      <button type="submit">Login</button>
     </form>
   );
 }

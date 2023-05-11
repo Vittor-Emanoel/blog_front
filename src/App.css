@@ -1,11 +1,12 @@
 * {
   box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
 }
 a {
   cursor: pointer;
 }
 body {
-  color: #222;
+  color: ;
 }
 img {
   max-width: 100%;

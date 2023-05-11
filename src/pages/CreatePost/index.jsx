@@ -65,13 +65,13 @@ export default function CreatePost() {
     <form onSubmit={creteNewPost}>
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Titulo do post"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
         type="summary"
-        placeholder="Summary"
+        placeholder="Subtitulo do post"
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />
@@ -82,7 +82,7 @@ export default function CreatePost() {
         formats={formats}
         onChange={(newValue) => setContent(newValue)}
       />
-      <button style={{ marginTop: "1rem" }}>Create Post</button>
+      <button style={{ marginTop: "1rem" }}>Criar post</button>
     </form>
   );
 }

@@ -71,7 +71,7 @@ export default function CreatePost() {
       />
       <input
         type="summary"
-        placeholder="Subtitulo do post"
+        placeholder="Resumo do post"
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />

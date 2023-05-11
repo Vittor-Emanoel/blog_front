@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Post from "../../components/Post";
+import CardPost from "../../components/Card";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -12,10 +12,32 @@ export default function HomePage() {
     });
   }, []);
 
+  const cover = posts[0]?.cover;
+
   return (
-    <>
-      {posts.length > 0 &&
-        posts.map((post) => <Post {...post} key={post._id} />)}
-    </>
+    <div className="container">
+      <div className="RelavantPostContainer">
+        <div>
+          <img src={"http://localhost:3333/" + cover} alt="" />
+        </div>
+
+        <div className="infos">
+          <span>Technology</span>
+          <h2>{posts[0]?.title}</h2>
+          <div className="infos-footer">
+            <p>{posts[0]?.summary}</p>
+            <time>August 20, 2022</time>
+          </div>
+        </div>
+      </div>
+
+      <div className="lastPosts">
+        <h2>Lastest Post</h2>
+        <div className="container">
+          {posts.length > 0 &&
+            posts.map((post) => <CardPost {...post} key={post._id} />)}
+        </div>
+      </div>
+    </div>
   );
 }
